@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "generos")
 public class Genero implements Serializable {
@@ -24,7 +26,8 @@ public class Genero implements Serializable {
 
 	@Column(name = "nome_genero", nullable = false)
 	private String nomeGenero;
-
+	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "generoJogo", targetEntity = Jogo.class)
 	private List<Jogo> jogos = new ArrayList<>();
 

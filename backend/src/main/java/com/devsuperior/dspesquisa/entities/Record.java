@@ -2,6 +2,8 @@ package com.devsuperior.dspesquisa.entities;
 
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.io.Serializable;
 import java.time.Instant;
 
@@ -30,7 +32,8 @@ public class Record implements Serializable {
 
 	@Column(name = "momento_record")
 	private Instant momentoRecord;
-
+	
+	@JsonBackReference
 	@ManyToOne(targetEntity = Jogo.class)
 	@JoinColumn(name = "id_jogo_record")
 	private Jogo jogoRecord;
