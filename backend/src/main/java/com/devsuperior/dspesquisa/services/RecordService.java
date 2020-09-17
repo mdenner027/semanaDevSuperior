@@ -1,10 +1,10 @@
 package com.devsuperior.dspesquisa.services;
 
 import java.time.Instant;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,8 +35,9 @@ public class RecordService {
 		return new RecordDTO(repository.save(entity));
 	}
 
-	public List<RecordDTO> findAll() {
-		return (repository.findAllByOrderByMomentoRecordDesc().stream().map(x -> new RecordDTO(x))
-				.collect(Collectors.toList()));
+	@Transactional(readOnly = true)
+	public Page<RecordDTO> findByMoments(Instant min, Instant max, PageRequest page) {
+		return (repository.findByMomentos(min, max, page)
+				.map(x -> new RecordDTO(x)));
 	}
 }
