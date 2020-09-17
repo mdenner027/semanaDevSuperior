@@ -36,7 +36,7 @@ public class RecordController {
 			@RequestParam(value = "max", defaultValue = "") String max, 
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "0") Integer linesPerPage,
-			@RequestParam(value = "orderBy", defaultValue = "moment") String orderBy,
+			@RequestParam(value = "orderBy", defaultValue = "momentoRecord") String orderBy,
 			@RequestParam(value = "direction", defaultValue = "DESC") String direction) {
 
 		Instant minDate = "".equals(min) ? null : Instant.parse(min);
