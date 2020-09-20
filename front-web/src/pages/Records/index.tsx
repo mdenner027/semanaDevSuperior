@@ -4,7 +4,6 @@ import './styles.css';
 import Pagination from './Pagination';
 import { RecordsResponse } from './types';
 import { formatDate } from './helpers';
-import { Link } from 'react-router-dom';
 import Filters from '../../components/Filters'
 
 const BASE_URL = 'https://sds1-max.herokuapp.com';
